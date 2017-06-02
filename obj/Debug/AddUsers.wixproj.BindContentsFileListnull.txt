@@ -1,0 +1,4 @@
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\Users\bin\Debug\EntityFramework.dll
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\Users\bin\Debug\EntityFramework.SqlServer.dll
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\Users\bin\Debug\Users.exe
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\Users\bin\Debug\Users.exe.config

@@ -1,0 +1,7 @@
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\AddUsers\bin\Debug\cab1.cab
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\AddUsers\bin\Debug\AddUsers.msi
+C:\Users\LT5244\documents\visual studio 2017\Projects\Users\AddUsers\bin\Debug\AddUsers.wixpdb
+obj\Debug\Product.wixobj
+obj\Debug\AddUsers.wixproj.BindContentsFileListnull.txt
+obj\Debug\AddUsers.wixproj.BindOutputsFileListnull.txt
+obj\Debug\AddUsers.wixproj.BindBuiltOutputsFileListnull.txt
