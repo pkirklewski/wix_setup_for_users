@@ -9,17 +9,65 @@
 		<Feature Id="ProductFeature" Title="AddUsers" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 			<ComponentGroupRef Id="ProgramFilesFolder_files" />
+    
+      <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->
+      <ComponentRef Id="ApplicationShortcut" />
+     <ComponentRef Id="ApplicationShortcutDesktop" />
+      <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->
 		</Feature>
 	</Product>
 
 	<Fragment>
 		<Directory Id="TARGETDIR" Name="SourceDir">
 			<Directory Id="ProgramFilesFolder">
-				<Directory Id="INSTALLFOLDER" Name="AddUsers" />
+				<Directory Id="INSTALLFOLDER" Name="AddUsersToPL" />
 			</Directory>
+    
+  <!-- STEP 1 Adding Program  Menu Folder ================================== -->
+          <Directory Id="ProgramMenuFolder">
+            <Directory Id="ApplicationProgramsFolder" Name="AddUsersToPL"/>
+        </Directory>
+      
+      <Directory Id="DesktopFolder" Name="Desktop"/>
+  <!-- =============================================================  --> 
 		</Directory>
+ <!--   
+    </Fragment>
+   
+  
+  <Fragment>--> 
+    
+        <!-- STEP 2 Adding Start Menu Shortcut ================================== --> 
+      <DirectoryRef Id="ApplicationProgramsFolder">
+        <Component Id="ApplicationShortcut" Guid="ed0c2cc2-e559-4998-ac2a-45017f625453">
+            <Shortcut Id="ApplicationStartMenuShortcut" 
+                      Name="AddUsersToPL"
+                      Description="Add users to Process Library"
+                      Target="[#Users.exe]"
+                      WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+            <RemoveFolder Id="CleanUpShortCut" Directory="ApplicationProgramsFolder" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\AddUsersToPL" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        </Component>
+    </DirectoryRef>
+    
+          <DirectoryRef Id="DesktopFolder">
+        <Component Id="ApplicationShortcutDesktop" Guid="1a6a9b1f-8c42-42d0-9976-bb9ec6fc7d33">
+            <Shortcut Id="ApplicationDesktopShortcut" 
+                      Name="AddUsersToPL"
+                      Description="Add users to Process Library"
+                      Target="[#Users.exe]"
+                      WorkingDirectory="APPLICATIONROOTDIRECTORY"/>
+            <RemoveFolder Id="CleanUpDesktopShortCut" Directory="DesktopFolder" On="uninstall"/>
+            <RegistryValue Root="HKCU" Key="Software\Microsoft\AddUsers" Name="installed" Type="integer" Value="1" KeyPath="yes"/>
+        </Component>
+    </DirectoryRef>
+            <!-- STEP 2 Adding Desktopu Shortcut ================================== -->
+        <!-- END IF STEP 2 Adding Start Menu Shortcut ================================== -->
 	</Fragment>
 
+  
+    
+      
 	<Fragment>
 		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
 			<!-- TODO: Remove the comments around this Component element and the ComponentRef below in order to add resources to this installer. -->
