@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi"><?define Users_TargetDir=$(var.Users.TargetDir)?>
-	<Product Id="*" Name="AddUsers" Language="1033" Version="1.0.0.0" Manufacturer="Engie.com" UpgradeCode="dae10a63-36a9-4757-ac41-afd6f9292c2b">
+	<Product Id="*" Name="AddUsers" Language="1033" Version="1.0.0.1" Manufacturer="Engie.com" UpgradeCode="dae10a63-36a9-4757-ac41-afd6f9292c2b">
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
 
 		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
@@ -9,11 +9,8 @@
 		<Feature Id="ProductFeature" Title="AddUsers" Level="1">
 			<ComponentGroupRef Id="ProductComponents" />
 			<ComponentGroupRef Id="ProgramFilesFolder_files" />
-    
-      <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->
-      <ComponentRef Id="ApplicationShortcut" />
-     <ComponentRef Id="ApplicationShortcutDesktop" />
-      <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->
+      <ComponentRef Id="ApplicationShortcut" />                 <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->
+     <ComponentRef Id="ApplicationShortcutDesktop" />           <!-- STEP 0 - Add ComponentReferences for both Start Menu shortcuts and Desktop shortcut -->  
 		</Feature>
 	</Product>
 
@@ -22,20 +19,11 @@
 			<Directory Id="ProgramFilesFolder">
 				<Directory Id="INSTALLFOLDER" Name="AddUsersToPL" />
 			</Directory>
-    
-  <!-- STEP 1 Adding Program  Menu Folder ================================== -->
-          <Directory Id="ProgramMenuFolder">
-            <Directory Id="ApplicationProgramsFolder" Name="AddUsersToPL"/>
+          <Directory Id="ProgramMenuFolder">  <!-- STEP 1 Adding Program  Menu Folder ================================== -->
+          <Directory Id="ApplicationProgramsFolder" Name="AddUsersToPL"/>
         </Directory>
-      
       <Directory Id="DesktopFolder" Name="Desktop"/>
-  <!-- =============================================================  --> 
 		</Directory>
- <!--   
-    </Fragment>
-   
-  
-  <Fragment>--> 
     
         <!-- STEP 2 Adding Start Menu Shortcut ================================== --> 
       <DirectoryRef Id="ApplicationProgramsFolder">
